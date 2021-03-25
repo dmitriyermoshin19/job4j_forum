@@ -39,7 +39,7 @@ public class LoginControl {
     public String loginPage(@ModelAttribute User user, Model model) {
         String errorMessage = null;
         String res = null;
-        User u = fService.findUserByName(user.getUsername());
+        User u = fService.findUserByName(user.getName());
         if (u == null) {
             errorMessage = "Пользователь с таким именем не найден в системе !!";
             model.addAttribute("errorMessage", errorMessage);

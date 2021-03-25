@@ -1,20 +1,31 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.*;
 
+@Entity
+@Table(name = "topics")
 public class Topic {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
+    private Status status;
 
+    @ManyToOne
     private User author;
-
-    private Map<Integer, Post> posts = new HashMap<>();
+    @OneToMany(mappedBy = "topic")
+    private List<Post> posts = new ArrayList<>();
 
     public static Topic of(String name) {
         Topic topic = new Topic();
         topic.name = name;
+        topic.status = Status.ACTIVE;
         return topic;
+    }
+
+    public void addPosts(Post post) {
+        this.posts.add(post);
     }
 
     public int getId() {
@@ -41,18 +52,30 @@ public class Topic {
         this.author = author;
     }
 
-    public Map<Integer, Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(Map<Integer, Post> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Topic topic = (Topic) o;
         return id == topic.id;
     }

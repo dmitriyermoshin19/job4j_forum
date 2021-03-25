@@ -3,8 +3,11 @@ package ru.job4j.forum.control;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.job4j.forum.model.Status;
 import ru.job4j.forum.model.Topic;
 import ru.job4j.forum.service.ForumService;
+
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/topic")
@@ -24,6 +27,7 @@ public class TopicControl {
     @GetMapping("/update")
     public String getFormUpdate(@RequestParam("id") int id, Model model) {
         model.addAttribute("topic", fService.findById(id));
+        model.addAttribute("status", Arrays.asList(Status.values()));
         return "topic/edit";
     }
 

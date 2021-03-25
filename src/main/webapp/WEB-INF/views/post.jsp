@@ -46,13 +46,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${topic.posts.values()}" var="post">
+                    <c:forEach items="${topic.posts}" var="post">
                         <tr>
                             <td>
                                 <a href="${pageContext.request.contextPath}/update?postId=${post.id}">${post.name}</a>
                             </td>
                             <td>
-                                    ${post.desc}
+                                    ${post.description}
                             </td>
                             <td>
                                     ${post.created.time}

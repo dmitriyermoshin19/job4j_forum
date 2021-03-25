@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class PostControl {
     private final ForumService service;
-    private int topicId;
 
     public PostControl(ForumService service) {
         this.service = service;
@@ -22,7 +21,6 @@ public class PostControl {
 
     @GetMapping("/post")
     public String post(@RequestParam("id") int topicId, Model model) {
-        this.topicId = topicId;
         model.addAttribute("topic", service.findById(topicId));
         return "post";
     }
@@ -35,7 +33,7 @@ public class PostControl {
 
     @GetMapping("/update")
     public String updatePost(@RequestParam("postId") int postId, Model model) {
-        model.addAttribute("post", service.postFindById(topicId, postId));
+        model.addAttribute("post", service.postFindById(postId));
         return "post/edit";
     }
 

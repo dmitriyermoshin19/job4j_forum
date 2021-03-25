@@ -1,6 +1,5 @@
 package ru.job4j.forum.repository;
 
-import org.springframework.stereotype.Repository;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.Topic;
 import ru.job4j.forum.model.User;
@@ -8,7 +7,7 @@ import ru.job4j.forum.model.User;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Repository
+//@Repository
 public class MemRepository {
     private User currentUser;
     private final List<User> users = new ArrayList<>();
@@ -26,9 +25,8 @@ public class MemRepository {
 
         Topic topic = Topic.of("Продажа автомобилей");
         topic.setId(1);
-        Map<Integer, Post> topicMap = topic.getPosts();
-        topicMap.put(one.getId(), one);
-        topicMap.put(two.getId(), two);
+        topic.addPosts(one);
+        topic.addPosts(two);
         topic.setAuthor(user);
         topics.put(topic.getId(), topic);
 
@@ -52,7 +50,7 @@ public class MemRepository {
     public User findUserByName(String name) {
         User res = null;
         for (User u : users) {
-            if (u.getUsername().equals(name)) {
+            if (u.getName().equals(name)) {
                 res = u;
             }
         }
@@ -81,7 +79,7 @@ public class MemRepository {
         }
         post.setCreated(Calendar.getInstance());
         Topic topicById = findById(topicId);
-        topicById.getPosts().put(post.getId(), post);
+        topicById.addPosts(post);
         post.setTopic(topicById);
     }
 
