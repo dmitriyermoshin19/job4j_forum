@@ -44,7 +44,7 @@
                 <form name='login' action="<c:url value='/login'/>" method='POST'>
                     <div class="form-group">
                         <label for="username" style="font-weight: bold">UserName:</label>
-                        <input type="text" class="form-control" name="name" id="username" placeholder="Введите ваш логин..." required>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Введите ваш логин..." required>
                     </div>
                     <div class="form-group">
                         <label for="password" style="font-weight: bold">Password:</label>

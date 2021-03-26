@@ -27,7 +27,7 @@
         </ul>
         <ul class="nav">
             <li class="nav-item" style="font-weight: bold">
-                <a class="nav-link" href="<c:url value="/logout"/>"><c:out value="${user.name}"/> | Выйти из системы</a>
+                <a class="nav-link" href="<c:url value="/logout"/>"><c:out value="${user.username}"/> | Выйти из системы</a>
             </li>
         </ul>
         <ul class="nav">
@@ -58,7 +58,7 @@
                                 <a href="${pageContext.request.contextPath}/post?id=${topic.id}">${topic.name}</a>
                             </td>
                             <td>
-                                <c:out value="${topic.author.name}"/>
+                                <c:out value="${topic.author.username}"/>
                             </td>
                             <td>
                                 <c:out value="${topic.status.text}"/>

@@ -50,7 +50,7 @@ public class MemRepository {
     public User findUserByName(String name) {
         User res = null;
         for (User u : users) {
-            if (u.getName().equals(name)) {
+            if (u.getUsername().equals(name)) {
                 res = u;
             }
         }
