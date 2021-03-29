@@ -65,7 +65,7 @@ public class ForumService {
     }
 
     public Topic findById(int id) {
-        return tRep.findById(id).get();
+        return tRep.findById(id).orElse(null);
     }
     @Transactional
     public void addPost(int topicId, Post post) {
@@ -83,6 +83,6 @@ public class ForumService {
     }
 
     public Post postFindById(int id) {
-        return pRep.findById(id).get();
+        return pRep.findById(id).orElse(null);
     }
 }

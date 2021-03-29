@@ -55,7 +55,7 @@
                     <c:forEach items="${topics}" var="topic">
                         <tr>
                             <td>
-                                <a href="${pageContext.request.contextPath}/post?id=${topic.id}">${topic.name}</a>
+                                <a href="${pageContext.request.contextPath}/post?topicId=${topic.id}">${topic.name}</a>
                             </td>
                             <td>
                                 <c:out value="${topic.author.username}"/>

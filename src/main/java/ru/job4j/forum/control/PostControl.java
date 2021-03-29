@@ -20,7 +20,7 @@ public class PostControl {
     }
 
     @GetMapping("/post")
-    public String post(@RequestParam("id") int topicId, Model model) {
+    public String post(@RequestParam("topicId") int topicId, Model model) {
         model.addAttribute("topic", service.findById(topicId));
         return "post";
     }
