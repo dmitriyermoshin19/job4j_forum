@@ -28,13 +28,13 @@ public class ForumService {
         this.tRep = tRep;
         this.pRep = pRep;
         this.uRep = uRep;
-        this.autRep = autRep;
+        this.autRep = autRep; /*
         Authority a1 = new Authority("ROLE_USER");
         Authority a2 = new Authority("ROLE_ADMIN");
         if (autRep.findByAuthority("ROLE_USER") == null) {
             autRep.save(a1);
             autRep.save(a2);
-        }
+        } */
 
     }
 
