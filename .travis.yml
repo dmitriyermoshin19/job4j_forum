@@ -18,6 +18,9 @@ sudo: false
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
+install: true
+script: mvn clean package -DskipTests=true
+
 # Отправлять уведомление, если сборка упала, на почту youremail@smtp.ru(Изменить на свою)
 notifications:
   email:
@@ -29,3 +32,11 @@ notifications:
 env:
   global:
     - CODECOV_TOKEN="940c0bbb-5dfe-4b9c-9d51-61acd9c0d5d9"
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: CDT3YQayZHSLWQDjt1Yz9yJAds3JpFukis9bVhlEKfZlqM0u5OeAFZJOZLPIpY6DLR6csTxR5EKHWCQZI/1SyAoc9KYsMLzKrqtqtSHMqqjd0wBvaVkJqCIAcrJ89YHQO86RZ39ZuXP1SeeJLmogWzGE7e7c40mVOnZhR9sbSptmidfWf57zyEX7+xYLJDuL931U6IzYTwSOtVdvYCtRGlgoG4Z0ABY1dkfq10zp+TQN6b4leZpwxv+bxUq2pfesSxtos/Ba3rQYFEcsD2Q3ZoH9jMcm1EfAXeu/buDOm/tAKnaWIPHzloXSOZS1ubDfPY4Sygl4Xa94hxWBlm2yC06qJ18HbnNX45jBZyQ2iMLQIq7G7/oMMdKvISb2Fxwc+pa3M42+iL3cUNGZlAK/uxREVmJkrVEOU7tolfgWYHQjY4fG2hfDAk7rXaJktNlz4MqWUVB/xdyhSFb5j2TIkMH9EA+HpN9ZNIZUfQOCwQwYp3sroeesi+7pKudXc8UJoZwUX5y3JT8NAoTBaWXrTt8dWsTr7QH8lE5ZJqjJLkjTw71R+4r46GOkJKFn5+SaL1il87jdyj8H9cWg0goEMo1Lg2MHaIIU+gal5vdAeOqCc23GJ8M2Ei+RaUWULMMKvrln+nGzOyPSYWBQ+8tNl0sBgfOvIzjhpTyLLXedC18=
+  app: sleepy-bayou-25273
+  on:
+    branch: main
